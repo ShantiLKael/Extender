@@ -51,7 +51,10 @@ class Factory extends MaterialProducer
     }
 
     @Override
-    Material getMaterialType()  { return this.material; }
+    Material getMaterial()  { return this.material; }
+
+    @Override
+    char getCharType()  { return this.material.getCharType(); }
 
     @Override
     ArrayList< Minion > getLstMinions()   { return this.lstMinions; }

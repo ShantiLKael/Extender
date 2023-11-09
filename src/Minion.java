@@ -27,7 +27,7 @@ class Minion
 	private int level;
 
 	private int       pocket;
-	private Material  material;
+	//private Material  material;
 	private MaterialProducer deposit;
 
 	HashMap< Character, Integer > expMaterials;
@@ -41,7 +41,6 @@ class Minion
 		this.health = 20 * this.level;
 		this.pocket = 0;
 		this.deposit = null;
-		this.material = null;
 
 		this.expMaterials = new HashMap< Character, Integer >();
 
@@ -55,14 +54,14 @@ class Minion
 	 */
 	void createMaterials()
 	{
-		if ( this.deposit.isUsable() )
+		if ( this.deposit != null && this.deposit.isUsable() )
 		{
 			// The experience increases the number of material collected
-			int exp = this.expMaterials.get( this.material.getCharType() );
+			int exp = this.expMaterials.get( this.deposit.getCharType() );
 			this.pocket += 10 /** exp : increases nb materials collected */;
 
 			// Increases experience of the Minion for a specific material
-			this.expMaterials.put( this.material.getCharType(), exp /*+ depenfing on the collected material and tyime it takes to collect it */ );
+			this.expMaterials.put( this.deposit.getCharType(), exp /*+ depenfing on the collected material and tyime it takes to collect it */ );
 
 			// Decreases the health of the deposit 
 			this.deposit.deteriorate(1);
@@ -86,8 +85,6 @@ class Minion
 
 		this.deposit = producer;
 		this.deposit.addMinion( this );
-
-		this.material = producer.getMaterialType();
 	}
 
 	/**
@@ -104,12 +101,12 @@ class Minion
 	 * Returns the type of the Material the equivalent of the first 
 	 * character of a said Material.
 	 */
-	char getCharType() { return this.material.getCharType(); }
+	char getCharType() { return this.deposit.getCharType(); }
 	
 	
 	public String toString()
 	{
-		return "Minion " + String.format("%-7s", this.name) + " |" + this.material.labelMaterial() + "|";
+		return "Minion " + String.format("%-7s", this.name) + " |" + this.deposit.getMaterial().labelMaterial() + "|";
 	}
 
 	int getName() { return this.name; }

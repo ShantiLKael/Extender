@@ -21,7 +21,9 @@ abstract class MaterialProducer
     /**
      * Returns the material his primary material.
      */
-    abstract Material getMaterialType();
+    abstract Material getMaterial();
+
+    abstract char getCharType();
 
     abstract ArrayList< Minion > getLstMinions();
 
