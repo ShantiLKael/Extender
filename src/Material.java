@@ -14,6 +14,11 @@ abstract class Material
 	 */
 	abstract char   getType();
 
+	/**
+	 * WITH GUI Will show a floating animation
+	 * public void animation();
+	 */
+
 	/*
 		switch ( rType )
 		{

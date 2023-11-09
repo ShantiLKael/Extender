@@ -14,6 +14,7 @@ abstract class MaterialProducer
 
     /**
      * Returns true if the Factory can still produce materials.
+     * WITH GUI Will show a destruction animation
      */
     abstract boolean isUsable();
 
