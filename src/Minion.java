@@ -106,7 +106,8 @@ class Minion
 	
 	public String toString()
 	{
-		return "Minion " + String.format("%-7s", this.name) + " |" + this.deposit.getMaterial().labelMaterial() + "|";
+		return "Minion " + String.format("%-7s", this.name) + 
+			   this.deposit.getMaterial() != null ? " |" + this.deposit.getMaterial().labelMaterial() + "|" : "";
 	}
 
 	int getName() { return this.name; }
