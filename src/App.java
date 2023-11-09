@@ -1,6 +1,11 @@
-
 import java.util.ArrayList;
 
+/**
+ * Main class to play the game. For now, it tests the proper functioning of the Minion and MaterialProducer.
+ * Later on the visual interface of the game will be added.
+ * @author Ashanti NJANJA
+ * @version 1.0
+ */
 public class App {
 	public static void main( String[] args)
 	{ 
@@ -12,11 +17,11 @@ public class App {
 		ArrayList< Minion > minions = new ArrayList< Minion >( entryP * 10 );
 		ArrayList< MaterialProducer > matProducers = new ArrayList< MaterialProducer >( entryP );
 
-		// Initialising Minion tab
+		// Initialising array of minions
 		for ( int i = 0; i < minions.size(); i++ )
 			minions.add( new Minion(1) );
 
-		// Initialising MaterialProducer tab
+		// Initialising array of  material producers
 		int nbIter = 0;
 		String materialChoice =
 			"\n\n\t\t\t\t" + String.format("%-12s","(C) Cereal")     +
@@ -59,12 +64,12 @@ public class App {
 		{
 			System.out.println
 			(
-				"\n\n\n\t\t" + String.format("%-45s", "(E) Show every Material Producer")		+
-				"\t"		     + String.format("%-45s", "(A) Assign a Material Producer to a Minion") + "\n" +
-				"\t\t"	     + String.format("%-45s", "(S) Show one Material Producer")			+
-				"\t"		     + String.format("%-45s", "(C) Create a Minion or Material Producer")	  + "\n" +
-				"\t\t"	     + String.format("%-45s", "(W) Make a Minion collect ressources")	+ "\n\n" +
-				"\t\t"	     + String.format("%-45s", "(Q) Quit the game")						+ "\n"
+				"\n\n\n\t\t" + String.format("%-45s", "(E) Show every Material Producer") +
+				"\t"		 + String.format("%-45s", "(A) Assign a Material Producer to a Minion") + "\n" +
+				"\t\t"	     + String.format("%-45s", "(S) Show one Material Producer")   +
+				"\t"		 + String.format("%-45s", "(C) Create a Minion or Material Producer")   + "\n" +
+				"\t\t"	     + String.format("%-45s", "(W) Make a Minion collect ressources")	   + "\n\n" +
+				"\t\t"	     + String.format("%-45s", "(Q) Quit the game")						   + "\n"
 			);
 
 			// ask for entry
