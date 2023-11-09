@@ -1,6 +1,6 @@
-import java.util.List;
+import java.util.ArrayList;
 
-abstract class MaterialProducer
+abstract class Ennemy
 {
     /**
      * Decresases the health of the Producer.
@@ -25,7 +25,7 @@ abstract class MaterialProducer
 
     abstract char getCharType();
 
-    abstract List< Minion > getLstMinions();
+    abstract ArrayList< Minion > getLstMinions();
 
     abstract int getNbMinions();
     abstract int getMaxMiCapacity();

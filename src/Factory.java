@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.List;
 
 class Factory extends MaterialProducer
 {
@@ -8,7 +9,7 @@ class Factory extends MaterialProducer
     private int stock;
     private Material material;
 
-    private ArrayList< Minion > lstMinions;
+    private List< Minion > lstMinions;
     private int maxMiCapacity;
 
     Factory( Material m, int lvl, int capacity, int hp )
@@ -57,7 +58,7 @@ class Factory extends MaterialProducer
     char getCharType()  { return this.material.getCharType(); }
 
     @Override
-    ArrayList< Minion > getLstMinions()   { return this.lstMinions; }
+    List< Minion > getLstMinions()   { return this.lstMinions; }
 
     @Override
     int getNbMinions() { return this.lstMinions.size(); }
