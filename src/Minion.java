@@ -27,7 +27,6 @@ class Minion
 	private int level;
 
 	private int       pocket;
-	//private Material  material;
 	private MaterialProducer deposit;
 
 	HashMap< Character, Integer > expMaterials;
