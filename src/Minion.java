@@ -7,7 +7,7 @@ import java.util.HashMap;
  * <p> The {@code pocket} determine the number of Material </p>
  * <p> The {@code deposit} is the MaterialProducer where the minion returns the collected materials</p>
  * 
- * <p> The {@code expMaterials} represents the experiences per accumulated by the Minion per Material.
+ * <p> The {@code experience} represents the experiences per accumulated by the Minion per Material.
  * The experience increases the number of {@code material} when collected and the experienced itself can increase
  * by collecting materials.
  * </p>
@@ -17,19 +17,21 @@ import java.util.HashMap;
 class Minion
 {
 	private static int nbInstance;
+	private int name;
+
 	private static String[] tabName = { "Ada", "Amara", "Amana", "Jabari", "Zakari", 
 										"Jaiden", "Emily", "Roger", "Elsa", "Maria" };
 	private int health;
-	private int name;
-	//private int expFight;
-	//private Ennemy attackTarget;
+	private Ennemy attackTarget;
+	private Weapon wp;
 
 	private int level;
 
-	private int       pocket;
+	private int pocket;
+	private int maxPocket;		
 	private MaterialProducer deposit;
 
-	HashMap< Character, Integer > expMaterials;
+	HashMap< Character, Integer > experience;
 
 	Minion( int lvl )
 	{
@@ -38,35 +40,45 @@ class Minion
 		//this.name = tabName[ (int) (Math.random() * Minion.tabName.length) ];
 
 		this.health = 20 * this.level;
+		this.wp = null;
+
 		this.pocket = 0;
+		this.maxPocket = 10 * lvl;
 		this.deposit = null;
 
-		this.expMaterials = new HashMap< Character, Integer >();
+		this.experience = new HashMap< Character, Integer >();
 
-		for ( String str : Material.tabLib )
-			this.expMaterials.put( str.charAt(0), 0 );
+		// Initialising the experience map
+		for ( String str : Material.LABELS )
+			this.experience.put( str.charAt(0), 0 );
+		
+		this.experience.put( 'F', 0 ); // adding the experience named fighting
 	}
 
 	/**
 	 * The action of a Minion collecting materials and putting it in their pocket.
-	 * It also
+	 * If their pockets are full, it fills the stock of the MaterialProducer.
 	 */
 	void createMaterials()
 	{
 		if ( this.deposit != null && this.deposit.isUsable() )
 		{
 			// The experience increases the number of material collected
-			int exp = this.expMaterials.get( this.deposit.getCharType() );
-			this.pocket += 10 /** exp : increases nb materials collected */;
+			int exp = this.experience.get( this.deposit.getCharType() );
+
+			if ( this.isFull() ) this.discharge( this.pocket );
+			else this.pocket += 10 /** exp : increases nb materials collected */;
 
 			// Increases experience of the Minion for a specific material
-			this.expMaterials.put( this.deposit.getCharType(), exp /*+ depenfing on the collected material and tyime it takes to collect it */ );
+			this.experience.put( this.deposit.getCharType(), exp /*+ depenfing on the collected material and tyime it takes to collect it */ );
 
 			// Decreases the health of the deposit 
 			this.deposit.deteriorate(1);
 		}
 		// else { this.doNothing(); }
 	}
+
+	boolean isFull() { return this.maxPocket == this.pocket; }
 
 	void doNothing()
 	{
@@ -79,7 +91,7 @@ class Minion
 	 */
 	void assigneProducer( MaterialProducer producer )
 	{
-		if ( this.pocket != 0 ) this.discharge();
+		if ( this.pocket != 0 ) this.discharge( this.pocket );
 		if ( this.deposit != null ) this.deposit.delMinion( this );
 
 		this.deposit = producer;
@@ -90,10 +102,10 @@ class Minion
 	 * This method allows the Minion to discharge all of his collected materials
 	 * in the deposit.
 	 */
-	void discharge()
+	void discharge( int nbMat )
 	{
-		this.deposit.charge( this.pocket );
-		this.pocket = 0;
+		this.deposit.charge( nbMat );
+		this.pocket -= nbMat;
 	}
 
 	/**
@@ -110,5 +122,9 @@ class Minion
 	}
 
 	int getName() { return this.name; }
+
+	void recieveDamage( int damage ) { this.health -= damage; }
+	void attack       ( int damage ) { this.attackTarget.recieveDamage( wp.getDamage() ); }
+	void giveWeapon   ( Weapon wp  ) { this.wp = wp; }
 
 }

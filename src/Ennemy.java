@@ -1,37 +1,14 @@
-import java.util.ArrayList;
 
 abstract class Ennemy
 {
     /**
-     * Decresases the health of the Producer.
+     * Attack a Minion and decreases its health
      */
-    abstract void deteriorate( int nb );
+    abstract void attack();
 
     /**
-     * Fill the Producer's stock.
+     * Decreases the health of the ennemy
      */
-    abstract void charge( int nbMaterial );
+    abstract void recieveDamage( int damage );
 
-    /**
-     * Returns true if the Factory can still produce materials.
-     * WITH GUI Will show a destruction animation
-     */
-    abstract boolean isUsable();
-
-    /**
-     * Returns the material his primary material.
-     */
-    abstract Material getMaterial();
-
-    abstract char getCharType();
-
-    abstract ArrayList< Minion > getLstMinions();
-
-    abstract int getNbMinions();
-    abstract int getMaxMiCapacity();
-    abstract int getHealth();
-
-    abstract boolean addMinion( Minion mi );
-
-    abstract void    delMinion( Minion mi );
 }

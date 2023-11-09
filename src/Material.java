@@ -1,6 +1,6 @@
 abstract class Material 
 {
-	public final static String[] tabLib = { "Cereal", "Diamond", "Gold", "Iron",
+	public final static String[] LABELS = { "Cereal", "Diamond", "Gold", "Iron",
 											"Meat", "Rock",  "Wood" };
 
 	/**

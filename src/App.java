@@ -2,6 +2,7 @@ import java.util.ArrayList;
 
 /**
  * Main class to play the game. For now, it tests the proper functioning of the Minion and MaterialProducer.
+ * This version do not include ennemies.
  * Later on the visual interface of the game will be added.
  * @author Ashanti NJANJA
  * @version 1.0
