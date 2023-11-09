@@ -12,7 +12,7 @@ abstract class Material
 	 * Returns the type of the Material the equivalent of the first 
 	 * character of a said Material.
 	 */
-	abstract char   getType();
+	abstract char   getCharType();
 
 	/**
 	 * WITH GUI Will show a floating animation

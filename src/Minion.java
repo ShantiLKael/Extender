@@ -58,11 +58,11 @@ class Minion
 		if ( this.deposit.isUsable() )
 		{
 			// The experience increases the number of material collected
-			int exp = this.expMaterials.get( this.material.getType() );
+			int exp = this.expMaterials.get( this.material.getCharType() );
 			this.pocket += 10 /** exp : increases nb materials collected */;
 
 			// Increases experience of the Minion for a specific material
-			this.expMaterials.put( this.material.getType(), exp /*+ depenfing on the collected material and tyime it takes to collect it */ );
+			this.expMaterials.put( this.material.getCharType(), exp /*+ depenfing on the collected material and tyime it takes to collect it */ );
 
 			// Decreases the health of the deposit 
 			this.deposit.deteriorate(1);
@@ -104,7 +104,7 @@ class Minion
 	 * Returns the type of the Material the equivalent of the first 
 	 * character of a said Material.
 	 */
-	char getType() { return this.material.getType(); }
+	char getCharType() { return this.material.getCharType(); }
 	
 	
 	public String toString()

@@ -19,6 +19,6 @@ public class Meat extends Material
 	}
 
 	@Override
-	char getType() { return this.nameMaterial; }
+	char getCharType() { return this.nameMaterial; }
 
 }

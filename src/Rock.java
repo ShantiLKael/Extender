@@ -19,6 +19,6 @@ public class Rock extends Material
 	}
 
 	@Override
-	char getType() { return this.nameMaterial; }
+	char getCharType() { return this.nameMaterial; }
 
 }
