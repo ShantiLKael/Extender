@@ -18,7 +18,7 @@ import extender.producer.MaterialProducer;
  * This version do not include ennemies.
  * Later on the visual interface of the game will be added.
  * @author Ashanti NJANJA
- * @version 1.0
+ * @version 1.0 - 15/11/23
  */
 public class App {
 	public static void main( String[] args)
@@ -54,7 +54,6 @@ public class App {
 			System.out.print("\t\t\t\t\t# What Material do the Factory n° "+ (nbIter+1) +" create : ");
 			
 			// entry of material type
-			
 
 			Material m = App.charToMaterial(entryM);
 
@@ -131,7 +130,7 @@ public class App {
 			entry = 'Q';
 		} while ( entry != 'Q' );
 		
-				System.out.println("\n\n\t\t\t\t\t--->>  Merci d'avoir joué au jeu   <<---\n\n");
+		System.out.println("\n\n\t\t\t\t\t--->>  Goodbye   <<---\n\n");
 	}
 
 	public static Material charToMaterial( char c )
